@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "npx tinacms dev -c 'astro dev'",
 		"start": "astro dev",
-		"build": "tinacms build && astro build",
+		"build": "echo 'TINA_PUBLIC_CLIENT_ID:' $TINA_PUBLIC_CLIENT_ID && echo 'TINA_TOKEN:' $TINA_TOKEN && tinacms build && astro build",
 		"preview": "astro preview",
 		"astro": "astro"
 	},
