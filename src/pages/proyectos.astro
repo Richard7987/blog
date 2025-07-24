@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import client from "../../tina/__generated__/client";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -8,12 +8,16 @@ import ColorScript from "../components/ColorScript.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
-let proyectos = await getCollection("proyectos");
+const res = await client.queries.proyectosConnection();
+const proyectos = res.data.proyectosConnection.edges.map((edge) => ({
+	...edge.node,
+	url: `/project/${edge.node._sys.filename}`,
+}));
 
-proyectos = proyectos.sort(
+proyectos.sort(
 	(a, b) =>
-		new Date(b.data.updated || b.data.added).valueOf() -
-		new Date(a.data.updated || a.data.added).valueOf(),
+		new Date(b.updated || b.added).valueOf() -
+		new Date(a.updated || a.added).valueOf()
 );
 ---
 
@@ -26,12 +30,15 @@ proyectos = proyectos.sort(
 			<content>
 				<ul class="posts-list">
 					{
-						projects.map(
-							({
-								url,
-								data: { description, slug, title, tags, added: date },
-							}) => <Post {description} {date} {slug} {title} {tags} />
-						)
+						projects.map((proyecto) => (
+							<Post
+								description={proyecto.description}
+								date={proyecto.added}
+								slug={proyecto.url}
+								title={proyecto.title}
+								tags={proyecto.tags}
+							/>
+						))
 					}
 				</ul>
 			</content>
