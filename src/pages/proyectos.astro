@@ -8,9 +8,9 @@ import ColorScript from "../components/ColorScript.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
-let projects = await getCollection("projects");
+let proyectos = await getCollection("proyectos");
 
-projects = projects.sort(
+proyectos = proyectos.sort(
 	(a, b) =>
 		new Date(b.data.updated || b.data.added).valueOf() -
 		new Date(a.data.updated || a.data.added).valueOf(),

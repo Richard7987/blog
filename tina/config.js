@@ -129,8 +129,8 @@ export default defineConfig({
 				],
 			},
 			{
-				name: "project",
-				label: "Projects",
+				name: "proyectos",
+				label: "Proyectos",
 				path: "projects",
 				defaultItem: () => ({
 					title: "New Project",

@@ -14,7 +14,7 @@ const posts = defineCollection({
 	}),
 });
 
-const projects = defineCollection({
+const proyectos = defineCollection({
 	loader: glob({ pattern: "*.md", base: "./projects" }),
 	schema: z.object({
 		title: z.string(),
