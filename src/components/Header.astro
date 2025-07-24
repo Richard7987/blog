@@ -30,6 +30,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 	}
 	.header-text {
 		text-align: left;
+		flex-grow: 1; /* Allow text block to take up available space */
 	}
 	.profile-image {
 		width: 128px;
@@ -37,6 +38,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 		border-radius: 50%;
 		object-fit: cover;
 		margin-left: 2rem; /* Add some space between text and image */
+		flex-shrink: 0; /* Prevent image from shrinking */
 	}
 	h2 {
 		margin: 0.5em 0;
