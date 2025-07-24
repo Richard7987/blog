@@ -12,9 +12,11 @@ export async function getStaticPaths() {
 	}));
 }
 
-const { Content } = await Astro.props.render();
+const project = Astro.props;
+const res = await client.queries.proyectos({ relativePath: `${project._sys.filename}.md` });
+const { Content } = await res.data.proyectos.body;
 ---
 
-<BlogPost {...Astro.props}>
+<BlogPost {...project}>
 	<Content />
 </BlogPost>
