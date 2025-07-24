@@ -18,7 +18,12 @@
 	},
 	"dependencies": {
 		"@tinacms/cli": "^1.7.0",
-		"tinacms": "^2.8.1"
+		"tinacms": "^2.8.1",
+		"fs-extra": "^11.2.0",
+		"slate": "^0.103.0",
+		"slate-dom": "^0.111.0",
+		"slate-react": "^0.111.0",
+		"slate-hyperscript": "^0.100.0"
 	},
 	"overrides": {
 		"yup": "^1.6.1"

@@ -69,10 +69,12 @@ if (updated) {
 				<Tags tags={tags} />
 				<hr />
 				<div class="blog-post">
-					{body ? 
+					{body && typeof body === 'string' ? 
 						<Fragment set:html={body} /> 
-						: 
-						<p>{description}</p>
+						: body && typeof body === 'object' ?
+							<Fragment set:html={JSON.stringify(body)} />
+							:
+							<p>{description || 'No content available'}</p>
 					}
 				</div>
 			</article>
