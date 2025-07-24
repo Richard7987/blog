@@ -128,6 +128,105 @@ export default defineConfig({
 					},
 				],
 			},
+			{
+				name: "project",
+				label: "Projects",
+				path: "projects",
+				defaultItem: () => ({
+					title: "New Project",
+					added: new Date(),
+					tags: [],
+				}),
+				ui: {
+					dateFormat: "MMM DD YYYY",
+					filename: {
+						readonly: false,
+						slugify: (values) => {
+							return values?.slug?.toLowerCase().replace(/ /g, "-");
+						},
+					},
+				},
+				fields: [
+					{
+						name: "title",
+						label: "Title",
+						type: "string",
+						isTitle: true,
+						required: true,
+					},
+					{
+						label: "Slug",
+						name: "slug",
+						type: "string",
+						required: true,
+					},
+					{
+						label: "Description",
+						name: "description",
+						type: "string",
+						required: true,
+					},
+					{
+						label: "Tags",
+						name: "tags",
+						type: "string",
+						list: true,
+						options: [
+							{
+								value: "technical",
+								label: "Technical",
+							},
+							{
+								value: "advice",
+								label: "Advice",
+							},
+							{
+								value: "events",
+								label: "Events",
+							},
+							{
+								value: "learning",
+								label: "Learning",
+							},
+							{
+								value: "meta",
+								label: "Meta",
+							},
+							{
+								value: "work",
+								label: "Work",
+							},
+							{
+								value: "personal",
+								label: "Personal",
+							},
+							{
+								value: "musings",
+								label: "Musings",
+							},
+						],
+					},
+					{
+						label: "Added",
+						name: "added",
+						type: "datetime",
+						dateFormat: "MMM DD YYYY",
+						required: true,
+					},
+					{
+						label: "Updated",
+						name: "updated",
+						type: "datetime",
+						dateFormat: "MMM DD YYYY",
+					},
+					{
+						type: "rich-text",
+						name: "body",
+						label: "Body",
+						isBody: true,
+					},
+				],
+			},
 		],
 	},
 	search: {
