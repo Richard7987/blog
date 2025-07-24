@@ -13,10 +13,32 @@ export async function getStaticPaths() {
 }
 
 const project = Astro.props;
-const res = await client.queries.proyectos({ relativePath: `${project._sys.filename}.md` });
-const { Content } = await res.data.proyectos.body;
+let projectData = project;
+let content = "";
+
+try {
+	// Intentar obtener el contenido completo del proyecto
+	const res = await client.queries.proyectos({ relativePath: `${project._sys.filename}.md` });
+	if (res && res.data && res.data.proyectos) {
+		projectData = res.data.proyectos;
+		content = projectData.body || "";
+	}
+} catch (error) {
+	console.log("Error loading project content:", error);
+	// Usar los datos disponibles del proyecto
+	content = project.body || "<p>Content not available</p>";
+}
 ---
 
-<BlogPost {...project}>
-	<Content />
+<BlogPost 
+	content={{
+		title: projectData.title || project.title || "Untitled Project",
+		description: projectData.description || project.description || "",
+		added: projectData.added || project.added,
+		updated: projectData.updated || project.updated,
+		tags: projectData.tags || project.tags || [],
+		heroImage: projectData.heroImage || ""
+	}}
+>
+	<Fragment set:html={content} />
 </BlogPost>
