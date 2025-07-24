@@ -6,9 +6,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 <header>
 	<div class="header-section">
 		<div class="header-frame">
+			<div class="header-text">
+				<h1>{SITE_TITLE}</h1>
+				<h2>{SITE_DESCRIPTION}</h2>
+			</div>
 			<img src="/profile.png" alt="Profile Picture" class="profile-image" />
-			<h1>{SITE_TITLE}</h1>
-			<h2>{SITE_DESCRIPTION}</h2>
 		</div>
 	</div>
 </header>
@@ -21,17 +23,20 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 <style>
 	.header-frame {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		align-items: center;
-		text-align: center;
+		justify-content: space-between;
 		margin-bottom: 2rem;
+	}
+	.header-text {
+		text-align: left;
 	}
 	.profile-image {
 		width: 128px;
 		height: 128px;
 		border-radius: 50%;
 		object-fit: cover;
-		margin-bottom: 1rem;
+		margin-left: 2rem; /* Add some space between text and image */
 	}
 	h2 {
 		margin: 0.5em 0;
