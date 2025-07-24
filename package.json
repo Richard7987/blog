@@ -20,6 +20,9 @@
 		"@tinacms/cli": "^1.7.0",
 		"tinacms": "^2.8.1"
 	},
+	"overrides": {
+		"yup": "^1.6.1"
+	},
 	"description": "[![Netlify Status](https://api.netlify.com/api/v1/badges/eab04209-5f7f-41ed-a8dd-c45a9ebb1834/deploy-status)](https://app.netlify.com/sites/blahg/deploys)",
 	"main": "index.js",
 	"repository": {
