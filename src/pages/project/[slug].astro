@@ -1,11 +1,13 @@
 ---
-import { getCollection } from "astro:content";
+import client from "../../../tina/__generated__/client";
 import BlogPost from "../../layouts/BlogPost.astro";
 
 export async function getStaticPaths() {
-	const proyectos = await getCollection("proyectos");
+	const res = await client.queries.proyectosConnection();
+	const proyectos = res.data.proyectosConnection.edges.map((edge) => edge.node);
+
 	return proyectos.map((project) => ({
-		params: { slug: project.slug },
+		params: { slug: project._sys.filename },
 		props: project,
 	}));
 }
