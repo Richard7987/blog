@@ -3,7 +3,7 @@ import client from "../../tina/__generated__/client";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import Post from "../components/Post.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 import ColorScript from "../components/ColorScript.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
@@ -31,7 +31,7 @@ proyectos.sort(
 				<ul class="posts-list">
 					{
 						proyectos.map((proyecto) => (
-							<Post
+							<ProjectCard
 								description={proyecto.description}
 								date={proyecto.added}
 								slug={proyecto.url}

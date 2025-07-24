@@ -1,41 +1,74 @@
 ---
 import { getCollection } from "astro:content";
+import client from "../../../tina/__generated__/client";
 import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import Post from "../../components/Post.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
 import ColorScript from "../../components/ColorScript.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../config";
 
 export async function getStaticPaths() {
+	// Obtener posts y proyectos
 	let posts = await getCollection("posts");
-	const tags = posts.reduce((allTags, post) => {
+	const projectsRes = await client.queries.proyectosConnection();
+	const projects = projectsRes.data.proyectosConnection.edges.map((edge) => edge.node);
+
+	// Combinar tags de posts y proyectos
+	const tags = {};
+	
+	// Procesar tags de posts
+	posts.forEach((post) => {
 		const postTags = post.data.tags;
 		if (postTags) {
 			postTags.forEach((tag) => {
-				if (!allTags[tag]) {
-					allTags[tag] = [];
+				if (!tags[tag]) {
+					tags[tag] = { posts: [], projects: [] };
 				}
-				allTags[tag].push(post);
+				tags[tag].posts.push(post);
 			});
 		}
-		return allTags;
-	}, {});
+	});
+	
+	// Procesar tags de proyectos
+	projects.forEach((project) => {
+		if (project.tags) {
+			project.tags.forEach((tag) => {
+				if (!tags[tag]) {
+					tags[tag] = { posts: [], projects: [] };
+				}
+				tags[tag].projects.push({
+					...project,
+					url: `/project/${project._sys.filename}`,
+					type: 'project'
+				});
+			});
+		}
+	});
 
 	return Object.keys(tags).map((t) => {
 		return {
 			params: { tag: t },
-			props: { tag: tags[t] },
+			props: { 
+				taggedPosts: tags[t].posts,
+				taggedProjects: tags[t].projects
+			},
 		};
 	});
 }
 
-const { tag } = Astro.props;
+const { taggedPosts, taggedProjects } = Astro.props;
 const { tag: currentTag } = Astro.params;
 
-let sortedPosts = tag.sort(
+// Ordenar posts y proyectos por fecha
+let sortedPosts = taggedPosts.sort(
 	(a, b) => new Date(b.data.added).valueOf() - new Date(a.data.added).valueOf(),
+);
+
+let sortedProjects = taggedProjects.sort(
+	(a, b) => new Date(b.added).valueOf() - new Date(a.added).valueOf(),
 );
 ---
 
@@ -45,19 +78,48 @@ let sortedPosts = tag.sort(
 	<body>
 		<Header />
 		<main>
-			<content>
-				<h3>Posts tagged with "{currentTag}"</h3>
-				<ul class="tags-list">
-					{
-						sortedPosts.map(
-							({
-								url,
-								data: { description, slug, title, tags, added: date },
-							}) => <Post {url} {description} {date} {slug} {title} {tags} />
-						)
-					}
-				</ul>
-			</content>
+			<section>
+				<h3>Content tagged with "{currentTag}"</h3>
+				
+				{sortedPosts.length > 0 && (
+					<div>
+						<h4>Posts ({sortedPosts.length})</h4>
+						<ul class="tags-list">
+							{
+								sortedPosts.map(
+									({
+										url,
+										data: { description, slug, title, tags, added: date },
+									}) => <Post {url} {description} {date} {slug} {title} {tags} />
+								)
+							}
+						</ul>
+					</div>
+				)}
+				
+				{sortedProjects.length > 0 && (
+					<div>
+						<h4>Projects ({sortedProjects.length})</h4>
+						<ul class="tags-list">
+							{
+								sortedProjects.map((project) => (
+									<ProjectCard
+										description={project.description}
+										date={project.added}
+										slug={project.url}
+										title={project.title}
+										tags={project.tags}
+									/>
+								))
+							}
+						</ul>
+					</div>
+				)}
+				
+				{sortedPosts.length === 0 && sortedProjects.length === 0 && (
+					<p>No content found with tag "{currentTag}".</p>
+				)}
+			</section>
 			<Footer />
 		</main>
 		<ColorScript />
