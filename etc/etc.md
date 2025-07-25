@@ -13,13 +13,13 @@ Python, Java, Bash, C++, JavaScript, HTML5, CSS3
 FastAPI, React, Next.js, Spring, Django, PyTorch
 
 **DevOps & Tools:**  
-GitHub, GitLab, Gerrit, Docker, Jira, Zenhub
+GitHub, GitLab, Gerrit, Docker, Jira, Zen-hub
 
 **Cloud Platforms:**  
 AWS, Azure, Google Cloud
 
 **Databases:**  
-PostgreSQL, MySQL, MongoDB
+PostgresSQL, MySQL, MongoDB
 
 **Operating Systems:**  
 Linux (daily driver), Windows 11, macOS
@@ -34,7 +34,7 @@ Cybersecurity, Self-hosting, Server Management, Automation
 
 ## 🎓 Education
 
-**BSc in Applied Physics**  
+**B.Sc. in Applied Physics**  
 *Autonomous University of Hidalgo State (UAEH)*  
 2023 – 2027 *(expected)*
 
@@ -46,7 +46,7 @@ Fundamentals and practical programming knowledge.
 
 ## 📅 Conferences
 
-- **SAPinsider Vegas 2024** — Workshops on SAP technologies and enterprise trends.  
+- **SAP insider Vegas 2024** — Workshops on SAP technologies and enterprise trends.  
 - **CES Las Vegas** — Exposure to emerging technologies and industry networking.
 
 ---
