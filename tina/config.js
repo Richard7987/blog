@@ -102,6 +102,10 @@ export default defineConfig({
 								label: "Personal",
 							},
 							{
+								value: "projects",
+								label: "Projects",
+							},
+							{
 								value: "musings",
 								label: "Musings",
 							},
@@ -199,6 +203,10 @@ export default defineConfig({
 							{
 								value: "personal",
 								label: "Personal",
+							},
+							{
+								value: "projects",
+								label: "Projects",
 							},
 							{
 								value: "musings",
