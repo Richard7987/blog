@@ -5,7 +5,7 @@ description: >-
   Modular, AI-driven mushroom cultivation system with automated environmental
   controls.
 tags:
-  - work
+  - projects
 added: 2025-07-25T04:19:32.107Z
 ---
 
