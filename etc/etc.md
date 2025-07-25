@@ -35,8 +35,7 @@ Cybersecurity, Self-hosting, Server Management, Automation
 ## 🎓 Education
 
 **B.Sc. in Applied Physics**  
-*Autonomous University of Hidalgo State (UAEH)*  
-2023 – 2027 *(expected)*
+*Autonomous University of Hidalgo State (UAEH)*
 
 **Programming Certificate**  
 *CBTIS 199*  
