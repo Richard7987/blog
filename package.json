@@ -17,13 +17,18 @@
 		"prettier-plugin-astro": "^0.14.1"
 	},
 	"dependencies": {
+		"@astrojs/react": "^4.3.0",
 		"@tinacms/cli": "^1.7.0",
-		"tinacms": "^2.8.1",
+		"@types/react": "^19.1.8",
+		"@types/react-dom": "^19.1.6",
 		"fs-extra": "^11.2.0",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0",
 		"slate": "^0.103.0",
 		"slate-dom": "^0.111.0",
+		"slate-hyperscript": "^0.100.0",
 		"slate-react": "^0.111.0",
-		"slate-hyperscript": "^0.100.0"
+		"tinacms": "^2.8.1"
 	},
 	"overrides": {
 		"yup": "^1.6.1"
