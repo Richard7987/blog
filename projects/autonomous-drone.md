@@ -15,30 +15,30 @@ El objetivo de este proyecto es desarrollar un UAV (dron de ala fija) basado en 
 
 El sistema está diseñado para ser **eficiente y de bajo costo**, utilizando solo los componentes esenciales para maximizar la autonomía de vuelo y la funcionalidad.
 
-***
+---
 
 ## Características Principales
 
 ### Navegación Autónoma
 
-* Sistema de vuelo autónomo mediante **Cube Orange + GPS Here3**
-* Capacidad de seguir rutas predefinidas con múltiples waypoints
-* Algoritmos de evasión de obstáculos y rutas alternativas
+- Sistema de vuelo autónomo mediante **Cube Orange + GPS Here3**
+- Capacidad de seguir rutas predefinidas con múltiples waypoints
+- Algoritmos de evasión de obstáculos y rutas alternativas
 
 ### Modos de Operación
 
-* **Modo autónomo**: Navegación a un punto designado sin intervención humana
-* **Modo de espera (Loiter Mode)**: Mantiene posición en la zona de interés mientras analiza el entorno
-* **Control manual**: Posibilidad de tomar control con un radio FrSky Taranis X9D
-* **Regreso automático**: Si no hay intervención o ante batería baja, regresa al punto de origen
+- **Modo autónomo**: Navegación a un punto designado sin intervención humana
+- **Modo de espera (Loiter Mode)**: Mantiene posición en la zona de interés mientras analiza el entorno
+- **Control manual**: Posibilidad de tomar control con un radio FrSky Taranis X9D
+- **Regreso automático**: Si no hay intervención o ante batería baja, regresa al punto de origen
 
 ### Transmisión y Análisis
 
-* Transmisión de video FPV en tiempo real mediante el sistema **DJI FPV Air Unit**
-* Análisis de imágenes (opcional) con **Raspberry Pi 4 + Módulo 4G/LTE** para detección de personas y vehículos
-* Telemetría bidireccional para monitoreo de estado y ajustes en tiempo real
+- Transmisión de video FPV en tiempo real mediante el sistema **DJI FPV Air Unit**
+- Análisis de imágenes (opcional) con **Raspberry Pi 4 + Módulo 4G/LTE** para detección de personas y vehículos
+- Telemetría bidireccional para monitoreo de estado y ajustes en tiempo real
 
-***
+---
 
 ## Componentes Esenciales
 
@@ -83,25 +83,25 @@ El sistema está diseñado para ser **eficiente y de bajo costo**, utilizando so
 ## Modos de Operación Detallados
 
 1. **Modo Autónomo**:
-   * El drone despega y vuela hasta el punto designado siguiendo una ruta predefinida
-   * Mantiene altitud y velocidad constantes durante el trayecto
-   * Ajusta parámetros de vuelo según condiciones ambientales
+   - El drone despega y vuela hasta el punto designado siguiendo una ruta predefinida
+   - Mantiene altitud y velocidad constantes durante el trayecto
+   - Ajusta parámetros de vuelo según condiciones ambientales
 2. **Modo Loiter**:
-   * Mantiene un patrón de vuelo circular o estacionario en la zona de interés
-   * Ajusta radio y velocidad según necesidades de vigilancia
-   * Optimiza consumo energético para maximizar tiempo en zona
+   - Mantiene un patrón de vuelo circular o estacionario en la zona de interés
+   - Ajusta radio y velocidad según necesidades de vigilancia
+   - Optimiza consumo energético para maximizar tiempo en zona
 3. **Control Manual**:
-   * El operador puede tomar el control con el radio FrSky en cualquier momento
-   * Transición suave entre modos autónomo y manual
-   * Alertas de telemetría para el operador
+   - El operador puede tomar el control con el radio FrSky en cualquier momento
+   - Transición suave entre modos autónomo y manual
+   - Alertas de telemetría para el operador
 4. **Modo FPV**:
-   * Transmite video en tiempo real con DJI FPV
-   * Baja latencia para control preciso
-   * Superposición de datos de telemetría en pantalla
+   - Transmite video en tiempo real con DJI FPV
+   - Baja latencia para control preciso
+   - Superposición de datos de telemetría en pantalla
 5. **Regreso Automático**:
-   * Se activa por comando, batería baja o pérdida de señal
-   * Calcula ruta óptima de regreso considerando viento y obstáculos
-   * Aterrizaje automático en punto de origen
+   - Se activa por comando, batería baja o pérdida de señal
+   - Calcula ruta óptima de regreso considerando viento y obstáculos
+   -  Aterrizaje automático en punto de origen
 
 ***
 
@@ -109,33 +109,31 @@ El sistema está diseñado para ser **eficiente y de bajo costo**, utilizando so
 
 ### Fase 1: Construcción
 
-* Ensamblar el UAV con los componentes mínimos
-* Integrar sistema de propulsión y control
-* Instalar controlador de vuelo y sensores
+- Ensamblar el UAV con los componentes mínimos
+- Integrar sistema de propulsión y control
+- Instalar controlador de vuelo y sensores
 
 ### Fase 2: Configuración
 
-* Configurar y calibrar Cube Orange con ArduPilot
-* Programar misiones básicas y parámetros de vuelo
-* Ajustar PID para estabilidad óptima
+- Configurar y calibrar Cube Orange con ArduPilot
+- Programar misiones básicas y parámetros de vuelo
+-  Ajustar PID para estabilidad óptima
 
 ### Fase 3: Pruebas
 
-* Realizar pruebas de vuelo controlado
-* Validar navegación autónoma con waypoints
-* Probar sistemas de seguridad y recuperación
+- Realizar pruebas de vuelo controlado
+- Validar navegación autónoma con waypoints
+- Probar sistemas de seguridad y recuperación
 
 ### Fase 4: Optimización
 
-* Integrar el sistema FPV de DJI
-* Implementar análisis de imágenes (opcional)
-* Optimizar consumo energético y autonomía
+- Integrar el sistema FPV de DJI
+- Implementar análisis de imágenes (opcional)
+- Optimizar consumo energético y autonomía
 
 ## Recursos y Referencias
 
-[umami hammock](https://google.com)
-[Documentación oficial de ArduPilot](https://ardupilot.org/plane/)
-
-* [Especificaciones del Eclipson Pathfinder](https://www.eclipson-airplanes.com/)
-* [Guía de configuración de Cube Orange](https://docs.cubepilot.org/user-guides/autopilot/the-cube-module-overview)
-* [Tutorial de implementación de YOLOv8 en Raspberry Pi](https://github.com/ultralytics/ultralytics)
+- [Documentación oficial de ArduPilot](https://ardupilot.org/plane/)
+- [Especificaciones del Eclipson Pathfinder](https://www.eclipson-airplanes.com/)
+- [Guía de configuración de Cube Orange](https://docs.cubepilot.org/user-guides/autopilot/the-cube-module-overview)
+- [Tutorial de implementación de YOLOv8 en Raspberry Pi](https://github.com/ultralytics/ultralytics)
