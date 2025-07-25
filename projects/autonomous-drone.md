@@ -133,7 +133,9 @@ El sistema está diseñado para ser **eficiente y de bajo costo**, utilizando so
 
 ## Recursos y Referencias
 
-* [Documentación oficial de ArduPilot](https://ardupilot.org/plane/)
+[umami hammock](https://google.com)
+[Documentación oficial de ArduPilot](https://ardupilot.org/plane/)
+
 * [Especificaciones del Eclipson Pathfinder](https://www.eclipson-airplanes.com/)
 * [Guía de configuración de Cube Orange](https://docs.cubepilot.org/user-guides/autopilot/the-cube-module-overview)
 * [Tutorial de implementación de YOLOv8 en Raspberry Pi](https://github.com/ultralytics/ultralytics)
