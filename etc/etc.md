@@ -32,19 +32,6 @@ Cybersecurity, Self-hosting, Server Management, Automation
 
 ---
 
-## 🧠 Projects
-
-### **Autonomous AI-Powered Drone**
-Designed and built a fully autonomous drone with custom control systems and computer vision powered by AI.
-
-### **Home Server Setup**
-Configured a 24/7 home server with privacy-focused, self-hosted services and hardened security.
-
-### **Intelligent Cultivation System** *(In Progress)*
-Modular, AI-driven mushroom cultivation system with automated environmental controls.
-
----
-
 ## 🎓 Education
 
 **BSc in Applied Physics**  
