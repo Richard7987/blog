@@ -1,4 +1,6 @@
 ---
+---
+import { TinaMarkdown } from 'tinacms/dist/rich-text';
 import client from "../../../tina/__generated__/client";
 import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
@@ -69,40 +71,7 @@ if (updated) {
 				<Tags tags={tags} />
 				<hr />
 				<div class="blog-post">
-					{body && typeof body === 'object' && body.children ? 
-						<div>
-							{body.children.map((node, index) => {
-								if (node.type === 'h1') {
-									return <h1 key={index}>{node.children?.[0]?.text || ''}</h1>;
-								} else if (node.type === 'h2') {
-									return <h2 key={index}>{node.children?.[0]?.text || ''}</h2>;
-								} else if (node.type === 'p') {
-									return <p key={index}>{node.children?.[0]?.text || ''}</p>;
-								} else if (node.type === 'ul') {
-									return (
-										<ul key={index}>
-											{node.children?.map((li, liIndex) => 
-												<li key={liIndex}>{li.children?.[0]?.children?.[0]?.text || ''}</li>
-											)}
-										</ul>
-									);
-								} else if (node.type === 'ol') {
-									return (
-										<ol key={index}>
-											{node.children?.map((li, liIndex) => 
-												<li key={liIndex}>{li.children?.[0]?.children?.[0]?.text || ''}</li>
-											)}
-										</ol>
-									);
-								}
-								return <div key={index}>{node.children?.[0]?.text || ''}</div>;
-							})}
-						</div>
-						: body && typeof body === 'string' ? 
-							<Fragment set:html={body} />
-							:
-							<p>{description || 'No content available'}</p>
-					}
+					<TinaMarkdown content={body} />
 				</div>
 			</article>
 		</main>
