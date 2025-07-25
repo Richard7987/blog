@@ -1,6 +1,4 @@
 ---
----
-import { TinaMarkdown } from 'tinacms/dist/rich-text';
 import client from "../../../tina/__generated__/client";
 import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
@@ -53,6 +51,81 @@ if (updated) {
 		day: "numeric",
 	});
 }
+
+// Function to convert TinaCMS rich text to simple HTML
+function convertBodyToHTML(body) {
+	if (!body || !body.children) {
+		return "";
+	}
+	
+	let html = "";
+	
+	for (const node of body.children) {
+		if (node.type === "p") {
+			html += "<p>";
+			if (node.children) {
+				for (const child of node.children) {
+					if (child.type === "text") {
+						html += child.text || "";
+					}
+				}
+			}
+			html += "</p>";
+		} else if (node.type === "h1") {
+			html += "<h1>";
+			if (node.children) {
+				for (const child of node.children) {
+					if (child.type === "text") {
+						html += child.text || "";
+					}
+				}
+			}
+			html += "</h1>";
+		} else if (node.type === "h2") {
+			html += "<h2>";
+			if (node.children) {
+				for (const child of node.children) {
+					if (child.type === "text") {
+						html += child.text || "";
+					}
+				}
+			}
+			html += "</h2>";
+		} else if (node.type === "h3") {
+			html += "<h3>";
+			if (node.children) {
+				for (const child of node.children) {
+					if (child.type === "text") {
+						html += child.text || "";
+					}
+				}
+			}
+			html += "</h3>";
+		} else if (node.type === "ul") {
+			html += "<ul>";
+			if (node.children) {
+				for (const child of node.children) {
+					if (child.type === "li") {
+						html += "<li>";
+						if (child.children) {
+							for (const grandchild of child.children) {
+								if (grandchild.type === "text") {
+									html += grandchild.text || "";
+								}
+							}
+						}
+						html += "</li>";
+					}
+				}
+			}
+			html += "</ul>";
+		}
+	}
+	
+	return html;
+}
+
+const htmlContent = convertBodyToHTML(body);
 ---
 
 <!doctype html>
@@ -71,7 +144,7 @@ if (updated) {
 				<Tags tags={tags} />
 				<hr />
 				<div class="blog-post">
-					<TinaMarkdown content={body} />
+					<Fragment set:html={htmlContent} />
 				</div>
 			</article>
 		</main>
