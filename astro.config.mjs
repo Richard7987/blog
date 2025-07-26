@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
+import remarkGfm from 'remark-gfm';
 
 export default defineConfig({
   site: "https://blahg.netlify.app/",
@@ -9,10 +10,9 @@ export default defineConfig({
   markdown: {
     shikiConfig: {
       theme: "material-theme-darker",
-      langs: [],
-      wrap: true, // Mejora el renderizado de código
+      wrap: true,
     },
-    remarkPlugins: [], // Puedes añadir plugins de remark si los necesitas
-    rehypePlugins: [], // Puedes añadir plugins de rehype si los necesitas
+    remarkPlugins: [remarkGfm],
+    extendDefaultPlugins: true,
   },
 });
