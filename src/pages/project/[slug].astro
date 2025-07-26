@@ -1,6 +1,5 @@
 ---
-import { TinaMarkdown } from 'tinacms/dist/rich-text';
-import client from "../../../tina/__generated__/client";
+import { getCollection, render } from "astro:content";
 import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
@@ -9,29 +8,18 @@ import Tags from "../../components/Tags.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../config";
 
 export async function getStaticPaths() {
-	try {
-		const res = await client.queries.proyectosConnection();
-		const proyectos = res.data.proyectosConnection.edges.map((edge) => edge.node);
-
-		return proyectos.map((project) => ({
-			params: { slug: project._sys.filename },
-			props: {
-				title: project.title || "Untitled Project",
-				description: project.description || "",
-				added: project.added,
-				updated: project.updated,
-				tags: project.tags || [],
-				slug: project._sys.filename,
-				body: project.body || ""
-			}
-		}));
-	} catch (error) {
-		console.error("Error in getStaticPaths:", error);
-		return [];
-	}
+	const projects = await getCollection("projects");
+	
+	return projects.map((project) => ({
+		params: { slug: project.data.slug },
+		props: { project }
+	}));
 }
 
-const { title, description, added, updated, tags, slug, body } = Astro.props;
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const { title, description, added, updated, tags, slug } = project.data;
 
 // Formatear fechas
 let formattedAdded = "";
@@ -52,81 +40,6 @@ if (updated) {
 		day: "numeric",
 	});
 }
-
-// Function to convert TinaCMS rich text to simple HTML
-function convertBodyToHTML(body) {
-	if (!body || !body.children) {
-		return "";
-	}
-	
-	let html = "";
-	
-	for (const node of body.children) {
-		if (node.type === "p") {
-			html += "<p>";
-			if (node.children) {
-				for (const child of node.children) {
-					if (child.type === "text") {
-						html += child.text || "";
-					}
-				}
-			}
-			html += "</p>";
-		} else if (node.type === "h1") {
-			html += "<h1>";
-			if (node.children) {
-				for (const child of node.children) {
-					if (child.type === "text") {
-						html += child.text || "";
-					}
-				}
-			}
-			html += "</h1>";
-		} else if (node.type === "h2") {
-			html += "<h2>";
-			if (node.children) {
-				for (const child of node.children) {
-					if (child.type === "text") {
-						html += child.text || "";
-					}
-				}
-			}
-			html += "</h2>";
-		} else if (node.type === "h3") {
-			html += "<h3>";
-			if (node.children) {
-				for (const child of node.children) {
-					if (child.type === "text") {
-						html += child.text || "";
-					}
-				}
-			}
-			html += "</h3>";
-		} else if (node.type === "ul") {
-			html += "<ul>";
-			if (node.children) {
-				for (const child of node.children) {
-					if (child.type === "li") {
-						html += "<li>";
-						if (child.children) {
-							for (const grandchild of child.children) {
-								if (grandchild.type === "text") {
-									html += grandchild.text || "";
-								}
-							}
-						}
-						html += "</li>";
-					}
-				}
-			}
-			html += "</ul>";
-		}
-	}
-	
-	return html;
-}
-
-const htmlContent = convertBodyToHTML(body);
 ---
 
 <!doctype html>
@@ -145,7 +58,7 @@ const htmlContent = convertBodyToHTML(body);
 				<Tags tags={tags} />
 				<hr />
 				<div class="blog-post">
-					<Fragment set:html={htmlContent} />
+					<Content />
 				</div>
 			</article>
 		</main>

@@ -1,5 +1,5 @@
 ---
-import client from "../../tina/__generated__/client";
+import { getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -8,16 +8,13 @@ import ColorScript from "../components/ColorScript.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
-const res = await client.queries.proyectosConnection();
-const proyectos = res.data.proyectosConnection.edges.map((edge) => ({
-	...edge.node,
-	url: `/project/${edge.node._sys.filename}`,
-}));
+const proyectos = await getCollection("projects");
 
+// Ordenar por fecha de actualización o creación (más reciente primero)
 proyectos.sort(
 	(a, b) =>
-		new Date(b.updated || b.added).valueOf() -
-		new Date(a.updated || a.added).valueOf()
+		new Date(b.data.updated || b.data.added).valueOf() -
+		new Date(a.data.updated || a.data.added).valueOf()
 );
 ---
 
@@ -32,11 +29,11 @@ proyectos.sort(
 					{
 						proyectos.map((proyecto) => (
 							<ProjectCard
-								description={proyecto.description}
-								date={proyecto.added}
-								slug={proyecto.url}
-								title={proyecto.title}
-								tags={proyecto.tags}
+								description={proyecto.data.description}
+								date={proyecto.data.added}
+								slug={`/project/${proyecto.data.slug}`}
+								title={proyecto.data.title}
+								tags={proyecto.data.tags}
 							/>
 						))
 					}
