@@ -9,131 +9,142 @@ tags:
 added: 2024-05-05T06:00:00.000Z
 ---
 
-## Resumen del Proyecto
+## Project Overview
 
-El objetivo de este proyecto es desarrollar un UAV (dron de ala fija) basado en el modelo **Eclipson Pathfinder** para misiones de vigilancia y reconocimiento. Se busca crear un sistema que pueda operar de forma **completamente autónoma**, responder a comandos para dirigirse a puntos específicos y, una vez en posición, permitir control manual o continuar en modo automático mientras analiza el entorno.
+The goal of this project is to develop a **fixed-wing UAV** based on the **Eclipson Pathfinder** model for surveillance and reconnaissance missions. The system is designed to operate in a **fully autonomous** mode, respond to commands to navigate to specific locations, and either remain under manual control or continue autonomously while analyzing its surroundings.
 
-El sistema está diseñado para ser **eficiente y de bajo costo**, utilizando solo los componentes esenciales para maximizar la autonomía de vuelo y la funcionalidad.
-
----
-
-## Características Principales
-
-### Navegación Autónoma
-
-- Sistema de vuelo autónomo mediante **Cube Orange + GPS Here3**
-- Capacidad de seguir rutas predefinidas con múltiples waypoints
-- Algoritmos de evasión de obstáculos y rutas alternativas
-
-### Modos de Operación
-
-- **Modo autónomo**: Navegación a un punto designado sin intervención humana
-- **Modo de espera (Loiter Mode)**: Mantiene posición en la zona de interés mientras analiza el entorno
-- **Control manual**: Posibilidad de tomar control con un radio FrSky Taranis X9D
-- **Regreso automático**: Si no hay intervención o ante batería baja, regresa al punto de origen
-
-### Transmisión y Análisis
-
-- Transmisión de video FPV en tiempo real mediante el sistema **DJI FPV Air Unit**
-- Análisis de imágenes (opcional) con **Raspberry Pi 4 + Módulo 4G/LTE** para detección de personas y vehículos
-- Telemetría bidireccional para monitoreo de estado y ajustes en tiempo real
-
----
-
-## Componentes Esenciales
-
-#### 1️. Estructura y Propulsión
-
-| Componente   | Especificación              | Función                                     |
-|--------------|-----------------------------|---------------------------------------------|
-| Chasis       | **Eclipson Pathfinder**     | Estructura aerodinámica impresa en 3D o kit |
-| Motor        | **T-Motor AT2312 KV1400**   | Propulsión principal con alta eficiencia    |
-| Hélice       | **APC 7x4**                 | Optimizada para eficiencia y empuje         |
-| ESC          | **T-Motor 30A**             | Control preciso del motor                   |
-| Servos       | **2x SG90 o MG90S**         | Control de superficies de vuelo             |
-| Batería      | **3S 2200mAh - 4S 3300mAh** | Alimentación con autonomía de 30-45 min     |
-| Power Module | **Holybro PM06**            | Distribución y monitoreo de energía         |
-
-#### 2️. Controlador de Vuelo y Navegación
-
-| Componente          | Especificación                  | Función                                     |
-|---------------------|---------------------------------|---------------------------------------------|
-| Controlador         | **Cube Orange + Carrier Board** | Cerebro del sistema, procesamiento de vuelo |
-| GPS                 | **Here3 GPS**                   | Posicionamiento preciso y navegación        |
-| Sensor de velocidad | **Airspeed Sensor digital**     | Medición de velocidad relativa al aire      |
-
-#### 3️. Comunicación y Control
-
-| Componente    | Especificación                                 | Función                             |
-|---------------|------------------------------------------------|-------------------------------------|
-| Radio control | **FrSky Taranis X9D + Receptor R9 Slim+ SBUS** | Control manual de respaldo          |
-| Telemetría    | **SiK Radio 915MHz o RFD900x**                 | Comunicación bidireccional de datos |
-| Sistema FPV   | **DJI FPV Air Unit**                           | Transmisión de video en tiempo real |
-
-#### 4️. Visión y Procesamiento (Opcional)
-
-| Componente   | Especificación        | Función                                |
-|--------------|-----------------------|----------------------------------------|
-| Computadora  | **Raspberry Pi 4**    | Procesamiento de imágenes y datos      |
-| Software     | **YOLOv8 ligero**     | Detección de objetos en tiempo real    |
-| Conectividad | **Módulo 4G/LTE USB** | Transmisión de datos a larga distancia |
-
----
-
-## Modos de Operación Detallados
-
-1. **Modo Autónomo**:
-- El drone despega y vuela hasta el punto designado siguiendo una ruta predefinida
-- Mantiene altitud y velocidad constantes durante el trayecto
-- Ajusta parámetros de vuelo según condiciones ambientales
-2**Modo Loiter**:
-- Mantiene un patrón de vuelo circular o estacionario en la zona de interés
-- Ajusta radio y velocidad según necesidades de vigilancia
-- Optimiza consumo energético para maximizar tiempo en zona
-3. **Control Manual**:
-- El operador puede tomar el control con el radio FrSky en cualquier momento
-- Transición suave entre modos autónomo y manual
-- Alertas de telemetría para el operador
-4. **Modo FPV**:
-- Transmite video en tiempo real con DJI FPV
-- Baja latencia para control preciso
-- Superposición de datos de telemetría en pantalla
-5. **Regreso Automático**:
-- Se activa por comando, batería baja o pérdida de señal
-- Calcula ruta óptima de regreso considerando viento y obstáculos
--  Aterrizaje automático en punto de origen
+This UAV is intended to be **cost-effective and efficient**, using only essential components to maximize flight autonomy and functionality.
 
 ***
 
-## Plan de Implementación
+## Key Features
 
-### Fase 1: Construcción
+### Autonomous Navigation
 
-- Ensamblar el UAV con los componentes mínimos
-- Integrar sistema de propulsión y control
-- Instalar controlador de vuelo y sensores
+* Autonomous flight system powered by **Cube Orange + Here3 GPS**
+* Ability to follow predefined routes with multiple waypoints
+* Obstacle avoidance and dynamic rerouting algorithms
 
-### Fase 2: Configuración
+### Operating Modes
 
-- Configurar y calibrar Cube Orange con ArduPilot
-- Programar misiones básicas y parámetros de vuelo
--  Ajustar PID para estabilidad óptima
+* **Autonomous Mode**: Navigates to a designated point without human intervention
+* **Loiter Mode**: Holds position in an area of interest while monitoring the environment
+* **Manual Control**: Pilot can take control using a **FrSky Taranis X9D** transmitter
+* **Auto Return**: Automatically returns to home if no input is received or battery is low
 
-### Fase 3: Pruebas
+### Transmission & Analysis
 
-- Realizar pruebas de vuelo controlado
-- Validar navegación autónoma con waypoints
-- Probar sistemas de seguridad y recuperación
+* Real-time FPV video feed via **DJI FPV Air Unit**
+* Optional image analysis using **Raspberry Pi 4 + 4G/LTE module** for person/vehicle detection
+* Bidirectional telemetry for live monitoring and real-time adjustments
 
-### Fase 4: Optimización
+***
 
-- Integrar el sistema FPV de DJI
-- Implementar análisis de imágenes (opcional)
-- Optimizar consumo energético y autonomía
+## Essential Components
 
-## Recursos y Referencias
+### 1. Frame and Propulsion
 
-- [Documentación oficial de ArduPilot](https://ardupilot.org/plane/)
-- [Especificaciones del Eclipson Pathfinder](https://www.eclipson-airplanes.com/)
-- [Guía de configuración de Cube Orange](https://docs.cubepilot.org/user-guides/autopilot/the-cube-module-overview)
-- [Tutorial de implementación de YOLOv8 en Raspberry Pi](https://github.com/ultralytics/ultralytics)
+| Component    | Specification               | Function                                |
+| ------------ | --------------------------- | --------------------------------------- |
+| Airframe     | **Eclipson Pathfinder**     | Aerodynamic 3D-printed frame or kit     |
+| Motor        | **T-Motor AT2312 KV1400**   | High-efficiency main propulsion         |
+| Propeller    | **APC 7x4**                 | Optimized for thrust and efficiency     |
+| ESC          | **T-Motor 30A**             | Motor speed control                     |
+| Servos       | **2x SG90 or MG90S**        | Controls flight surfaces                |
+| Battery      | **3S 2200mAh – 4S 3300mAh** | Power supply, 30–45 min flight autonomy |
+| Power Module | **Holybro PM06**            | Power distribution and monitoring       |
+
+### 2. Flight Controller & Navigation
+
+| Component         | Specification                   | Function                            |
+| ----------------- | ------------------------------- | ----------------------------------- |
+| Flight Controller | **Cube Orange + Carrier Board** | Core system for flight control      |
+| GPS Module        | **Here3 GPS**                   | Accurate positioning and navigation |
+| Airspeed Sensor   | **Digital Airspeed Sensor**     | Measures air-relative velocity      |
+
+### 3. Communication & Control
+
+| Component      | Specification                                  | Function                         |
+| -------------- | ---------------------------------------------- | -------------------------------- |
+| RC Transmitter | **FrSky Taranis X9D + R9 Slim+ SBUS Receiver** | Backup manual control            |
+| Telemetry      | **SiK Radio 915MHz or RFD900x**                | Bidirectional data communication |
+| FPV System     | **DJI FPV Air Unit**                           | Real-time video transmission     |
+
+### 4. Vision & Processing (Optional)
+
+| Component    | Specification         | Function                     |
+| ------------ | --------------------- | ---------------------------- |
+| Computer     | **Raspberry Pi 4**    | Image and data processing    |
+| Software     | **YOLOv8 Lite**       | Real-time object detection   |
+| Connectivity | **4G/LTE USB Module** | Long-range data transmission |
+
+***
+
+## Detailed Operating Modes
+
+### 1. Autonomous Mode
+
+* UAV takes off and navigates to the target location via a predefined route
+* Maintains constant altitude and speed
+* Adjusts flight parameters based on environmental conditions
+
+### 2. Loiter Mode
+
+* Holds circular or stationary flight pattern in the area of interest
+* Adjusts radius and speed for optimal surveillance
+* Optimizes power consumption to maximize time on target
+
+### 3. Manual Control
+
+* Operator can take control at any time using the FrSky transmitter
+* Smooth transition between manual and autonomous modes
+* Telemetry alerts for critical system updates
+
+### 4. FPV Mode
+
+* Real-time video feed through DJI FPV system
+* Low latency for precise control
+* On-screen display with telemetry data
+
+### 5. Auto Return
+
+* Activated by command, low battery, or loss of signal
+* Calculates optimal return path considering wind and obstacles
+* Automatic landing at home point
+
+***
+
+## Implementation Plan
+
+### Phase 1: Assembly
+
+* Assemble the UAV with essential components
+* Install propulsion and control systems
+* Mount the flight controller and sensors
+
+### Phase 2: Configuration
+
+* Configure and calibrate Cube Orange using ArduPilot
+* Program basic missions and flight parameters
+* Tune PID values for optimal stability
+
+### Phase 3: Testing
+
+* Conduct controlled flight tests
+* Validate autonomous navigation with waypoints
+* Test safety and fail-safe systems
+
+### Phase 4: Optimization
+
+* Integrate DJI FPV system
+* (Optional) Add image analysis module
+* Optimize power consumption and flight autonomy
+
+***
+
+## Resources & References
+
+* [Official ArduPilot Documentation](https://ardupilot.org/plane/)
+* [Eclipson Pathfinder Specifications](https://www.eclipson-airplanes.com/)
+* [Cube Orange Setup Guide](https://docs.cubepilot.org/user-guides/autopilot/the-cube-module-overview)
+* [YOLOv8 on Raspberry Pi – Ultralytics GitHub](https://github.com/ultralytics/ultralytics)
