@@ -42,7 +42,7 @@ El sistema está diseñado para ser **eficiente y de bajo costo**, utilizando so
 
 ## Componentes Esenciales
 
-### 1️. Estructura y Propulsión
+#### 1️. Estructura y Propulsión
 
 | Componente   | Especificación              | Función                                     |
 |--------------|-----------------------------|---------------------------------------------|
@@ -54,7 +54,7 @@ El sistema está diseñado para ser **eficiente y de bajo costo**, utilizando so
 | Batería      | **3S 2200mAh - 4S 3300mAh** | Alimentación con autonomía de 30-45 min     |
 | Power Module | **Holybro PM06**            | Distribución y monitoreo de energía         |
 
-### 2️. Controlador de Vuelo y Navegación
+#### 2️. Controlador de Vuelo y Navegación
 
 | Componente          | Especificación                  | Función                                     |
 |---------------------|---------------------------------|---------------------------------------------|
@@ -62,7 +62,7 @@ El sistema está diseñado para ser **eficiente y de bajo costo**, utilizando so
 | GPS                 | **Here3 GPS**                   | Posicionamiento preciso y navegación        |
 | Sensor de velocidad | **Airspeed Sensor digital**     | Medición de velocidad relativa al aire      |
 
-### 3️. Comunicación y Control
+#### 3️. Comunicación y Control
 
 | Componente    | Especificación                                 | Función                             |
 |---------------|------------------------------------------------|-------------------------------------|
@@ -70,7 +70,7 @@ El sistema está diseñado para ser **eficiente y de bajo costo**, utilizando so
 | Telemetría    | **SiK Radio 915MHz o RFD900x**                 | Comunicación bidireccional de datos |
 | Sistema FPV   | **DJI FPV Air Unit**                           | Transmisión de video en tiempo real |
 
-### 4️. Visión y Procesamiento (Opcional)
+#### 4️. Visión y Procesamiento (Opcional)
 
 | Componente   | Especificación        | Función                                |
 |--------------|-----------------------|----------------------------------------|
@@ -83,25 +83,25 @@ El sistema está diseñado para ser **eficiente y de bajo costo**, utilizando so
 ## Modos de Operación Detallados
 
 1. **Modo Autónomo**:
-   - El drone despega y vuela hasta el punto designado siguiendo una ruta predefinida
-   - Mantiene altitud y velocidad constantes durante el trayecto
-   - Ajusta parámetros de vuelo según condiciones ambientales
-2. **Modo Loiter**:
-   - Mantiene un patrón de vuelo circular o estacionario en la zona de interés
-   - Ajusta radio y velocidad según necesidades de vigilancia
-   - Optimiza consumo energético para maximizar tiempo en zona
+- El drone despega y vuela hasta el punto designado siguiendo una ruta predefinida
+- Mantiene altitud y velocidad constantes durante el trayecto
+- Ajusta parámetros de vuelo según condiciones ambientales
+2**Modo Loiter**:
+- Mantiene un patrón de vuelo circular o estacionario en la zona de interés
+- Ajusta radio y velocidad según necesidades de vigilancia
+- Optimiza consumo energético para maximizar tiempo en zona
 3. **Control Manual**:
-   - El operador puede tomar el control con el radio FrSky en cualquier momento
-   - Transición suave entre modos autónomo y manual
-   - Alertas de telemetría para el operador
+- El operador puede tomar el control con el radio FrSky en cualquier momento
+- Transición suave entre modos autónomo y manual
+- Alertas de telemetría para el operador
 4. **Modo FPV**:
-   - Transmite video en tiempo real con DJI FPV
-   - Baja latencia para control preciso
-   - Superposición de datos de telemetría en pantalla
+- Transmite video en tiempo real con DJI FPV
+- Baja latencia para control preciso
+- Superposición de datos de telemetría en pantalla
 5. **Regreso Automático**:
-   - Se activa por comando, batería baja o pérdida de señal
-   - Calcula ruta óptima de regreso considerando viento y obstáculos
-   -  Aterrizaje automático en punto de origen
+- Se activa por comando, batería baja o pérdida de señal
+- Calcula ruta óptima de regreso considerando viento y obstáculos
+-  Aterrizaje automático en punto de origen
 
 ***
 

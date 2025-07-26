@@ -12,7 +12,7 @@ This is an example blog post!
 
 # Heading 1
 
-This is an example lil thingy wow look at me!
+This is an example lil thingy wow looks at me!
 
 ## Heading 2
 
@@ -97,7 +97,7 @@ Just some normal text, wow.
 ---
 
 | Example table | Example things |
-| ------------- | -------------- |
+|---------------|----------------|
 | What          | how            |
 | Why           | when           |
 
