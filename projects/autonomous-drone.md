@@ -116,26 +116,19 @@ This UAV is intended to be **cost-effective and efficient**, using only essentia
 
 ## Implementation Plan
 
-### Phase 1: Assembly
-
+* **Phase 1: Assembly**
 * Assemble the UAV with essential components
 * Install propulsion and control systems
 * Mount the flight controller and sensors
-
-### Phase 2: Configuration
-
+* **Phase 2: Configuration**
 * Configure and calibrate Cube Orange using ArduPilot
 * Program basic missions and flight parameters
 * Tune PID values for optimal stability
-
-### Phase 3: Testing
-
+* **Phase 3: Testing**
 * Conduct controlled flight tests
 * Validate autonomous navigation with waypoints
 * Test safety and fail-safe systems
-
-### Phase 4: Optimization
-
+* **Phase 4: Optimization**
 * Integrate DJI FPV system
 * (Optional) Add image analysis module
 * Optimize power consumption and flight autonomy
