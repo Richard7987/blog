@@ -42,10 +42,10 @@ El sistema está diseñado para ser **eficiente y de bajo costo**, utilizando so
 
 ## Componentes Esenciales
 
-### 1️⃣ Estructura y Propulsión
+### 1️. Estructura y Propulsión
 
 | Componente   | Especificación              | Función                                     |
-| ------------ | --------------------------- | ------------------------------------------- |
+|--------------|-----------------------------|---------------------------------------------|
 | Chasis       | **Eclipson Pathfinder**     | Estructura aerodinámica impresa en 3D o kit |
 | Motor        | **T-Motor AT2312 KV1400**   | Propulsión principal con alta eficiencia    |
 | Hélice       | **APC 7x4**                 | Optimizada para eficiencia y empuje         |
@@ -54,31 +54,31 @@ El sistema está diseñado para ser **eficiente y de bajo costo**, utilizando so
 | Batería      | **3S 2200mAh - 4S 3300mAh** | Alimentación con autonomía de 30-45 min     |
 | Power Module | **Holybro PM06**            | Distribución y monitoreo de energía         |
 
-### 2️⃣ Controlador de Vuelo y Navegación
+### 2️. Controlador de Vuelo y Navegación
 
 | Componente          | Especificación                  | Función                                     |
-| ------------------- | ------------------------------- | ------------------------------------------- |
+|---------------------|---------------------------------|---------------------------------------------|
 | Controlador         | **Cube Orange + Carrier Board** | Cerebro del sistema, procesamiento de vuelo |
 | GPS                 | **Here3 GPS**                   | Posicionamiento preciso y navegación        |
 | Sensor de velocidad | **Airspeed Sensor digital**     | Medición de velocidad relativa al aire      |
 
-### 3️⃣ Comunicación y Control
+### 3️. Comunicación y Control
 
 | Componente    | Especificación                                 | Función                             |
-| ------------- | ---------------------------------------------- | ----------------------------------- |
+|---------------|------------------------------------------------|-------------------------------------|
 | Radio control | **FrSky Taranis X9D + Receptor R9 Slim+ SBUS** | Control manual de respaldo          |
 | Telemetría    | **SiK Radio 915MHz o RFD900x**                 | Comunicación bidireccional de datos |
 | Sistema FPV   | **DJI FPV Air Unit**                           | Transmisión de video en tiempo real |
 
-### 4️⃣ Visión y Procesamiento (Opcional)
+### 4️. Visión y Procesamiento (Opcional)
 
 | Componente   | Especificación        | Función                                |
-| ------------ | --------------------- | -------------------------------------- |
+|--------------|-----------------------|----------------------------------------|
 | Computadora  | **Raspberry Pi 4**    | Procesamiento de imágenes y datos      |
 | Software     | **YOLOv8 ligero**     | Detección de objetos en tiempo real    |
 | Conectividad | **Módulo 4G/LTE USB** | Transmisión de datos a larga distancia |
 
-***
+---
 
 ## Modos de Operación Detallados
 
