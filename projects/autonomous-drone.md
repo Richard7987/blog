@@ -51,7 +51,7 @@ This UAV is intended to be **cost-effective and efficient**, using only essentia
 | Propeller    | **APC 7x4**                 | Optimized for thrust and efficiency     |
 | ESC          | **T-Motor 30A**             | Motor speed control                     |
 | Servos       | **2x SG90 or MG90S**        | Controls flight surfaces                |
-| Battery      | **3S 2200mAh – 4S 3300mAh** | Power supply, 30–45 min flight autonomy |
+| Battery      | **3S 2200mAh - 4S 3300mAh** | Power supply, 30–45 min flight autonomy |
 | Power Module | **Holybro PM06**            | Power distribution and monitoring       |
 
 ### 2. Flight Controller & Navigation
@@ -116,19 +116,26 @@ This UAV is intended to be **cost-effective and efficient**, using only essentia
 
 ## Implementation Plan
 
-* **Phase 1: Assembly**
+**Phase 1: Assembly**
+
 * Assemble the UAV with essential components
 * Install propulsion and control systems
 * Mount the flight controller and sensors
-* **Phase 2: Configuration**
+
+**Phase 2: Configuration**
+
 * Configure and calibrate Cube Orange using ArduPilot
 * Program basic missions and flight parameters
 * Tune PID values for optimal stability
-* **Phase 3: Testing**
+
+**Phase 3: Testing**
+
 * Conduct controlled flight tests
 * Validate autonomous navigation with waypoints
 * Test safety and fail-safe systems
-* **Phase 4: Optimization**
+
+**Phase 4: Optimization**
+
 * Integrate DJI FPV system
 * (Optional) Add image analysis module
 * Optimize power consumption and flight autonomy
